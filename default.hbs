@@ -30,7 +30,7 @@
             <div class="site-footer-content inner">
                 <section class="copyright"><a href="{{@site.url}}">{{@site.title}}</a> &copy; {{date format="YYYY"}}</section>
                 <nav class="site-footer-nav">
-                    <a href="{{@site.url}}">Latest Posts</a>
+                    <a href="{{@site.url}}">Últimos artículos</a>
                     {{#if @site.facebook}}<a href="{{facebook_url @site.facebook}}" target="_blank" rel="noopener">Facebook</a>{{/if}}
                     {{#if @site.twitter}}<a href="{{twitter_url @site.twitter}}" target="_blank" rel="noopener">Twitter</a>{{/if}}
                     <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
@@ -44,7 +44,7 @@
     {{#if @labs.members}}
     <div class="subscribe-success-message">
         <a class="subscribe-close" href="javascript:;"></a>
-        You've successfully subscribed to {{@site.title}}!
+        Te has suscrito a {{@site.title}}
     </div>
 
     <div id="subscribe" class="subscribe-overlay">
@@ -56,21 +56,21 @@
             {{/if}}
             <div class="subscribe-form">
                 <h1 class="subscribe-overlay-title">{{t "Subscribe to {blogtitle}" blogtitle=@blog.title}}</h1>
-                <p class="subscribe-overlay-description">{{t "Stay up to date! Get all the latest and greatest posts delivered straight to your inbox"}}</p>
+                <p class="subscribe-overlay-description">Recibe mis últimas actualizaciones en tu correo</p>
                 <form data-members-form="subscribe">
                     <div class="form-group">
                         <input class="subscribe-email" data-members-email placeholder="youremail@example.com"
                             autocomplete="false" />
                         <button class="button primary" type="submit">
-                            <span class="button-content">{{t "Subscribe"}}</span>
+                            <span class="button-content">Suscríbete</span>
                             <span class="button-loader">{{> "icons/loader"}}</span>
                         </button>
                     </div>
                     <div class="message-success">
-                        <strong>Great!</strong> Check your inbox and click the link to confirm your subscription.
+                        <strong>👌 Bien.</strong> Revisa tu correo electrónico y pulsa el link de confirmación.
                     </div>
                     <div class="message-error">
-                        Please enter a valid email address!
+                        😔 Parece que tu correo electrónico no es válido.
                     </div>
                 </form>
             </div>
