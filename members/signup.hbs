@@ -11,7 +11,7 @@
         {{!-- Logged in, paying member: Redirect home --}}
         <script>window.location = '{{@site.url}}';</script>
 
-    {{else if @member}}
+    {{else}}
 
         {{!-- Logged in, not paying: Check out --}}
         <div class="checkout-form">
@@ -52,6 +52,8 @@
             </div>
         </div>
 
+    <!--
+    I comment this part to remove previus register payment
     {{else}}
 
         {{!-- Not logged in: Sign up --}}
@@ -70,7 +72,7 @@
             <div class="message-error">Please enter a valid email address!</div>
         </form>
 
-    {{/if}}
+    {{/if}}-->
 
     </div>
 </main>
