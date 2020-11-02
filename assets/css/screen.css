@@ -22,7 +22,8 @@ production stylesheet in assets/built/screen.css
 9.  Error Template
 10. Subscribe Overlay
 11. Site Footer
-12. Dark Mode
+12. Members
+13. Dark Mode
 
 */
 
@@ -109,12 +110,16 @@ body {
 /* 4. Site Header
 /* ---------------------------------------------------------- */
 
+.site-header {
+    height: 64px;
+}
+
 .site-header-background {
     position: relative;
     margin-top: 64px;
     padding-bottom: 12px;
     color: #fff;
-    background: color-mod(var(--darkgrey) l(-5%)) no-repeat center center;
+    background: color(var(--darkgrey) l(-5%)) no-repeat center center;
     background-size: cover;
 }
 
@@ -236,7 +241,7 @@ body {
 
 .site-archive-header .no-image .site-header-content {
     padding: 5vw 0 10px;
-    border-bottom: 1px solid color-mod(var(--lightgrey) l(+12%));
+    border-bottom: 1px solid color(var(--lightgrey) l(+12%));
 }
 
 
@@ -283,7 +288,7 @@ body {
     right: 0;
     left: 0;
     z-index: 1000;
-    background: color-mod(var(--darkgrey) l(-5%));
+    background: color(var(--darkgrey) l(-5%));
 }
 
 .site-nav {
@@ -292,34 +297,20 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    overflow: hidden;
     height: 64px;
     font-size: 1.3rem;
 }
 
-.site-nav-left-wrapper {
+.site-nav-left {
     position: relative;
     flex: 1 0 auto;
     display: flex;
+    align-items: flex-start;
+    height: 64px;
+    overflow-y: hidden;
 }
 
-.site-header-background:not(.responsive-header-img) .site-nav-left-wrapper:after,
-.site-nav-main .site-nav-left-wrapper:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    z-index: 1000;
-    width: 40px;
-    height: 100%;
-}
-
-.site-header-background:not(.responsive-header-img) .site-nav-left-wrapper:after,
-.site-nav-main .site-nav-left-wrapper:after {
-    right: 0;
-    background: linear-gradient(to right, color-mod(var(--darkgrey) l(-5%) a(0)) 0%,color-mod(var(--darkgrey) l(-5%)) 100%);
-}
-
-.site-nav-left {
+.site-nav-left-content {
     flex: 1 0 auto;
     display: flex;
     align-items: center;
@@ -336,8 +327,26 @@ body {
     -ms-overflow-scrolling: touch;
 }
 
-.site-nav-left .nav li:last-of-type {
-    padding-right: 20px;
+@media (max-width: 700px) {
+    .site-header-background:not(.responsive-header-img) .site-nav-left:after,
+    .site-nav-main .site-nav-left:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        z-index: 1000;
+        width: 40px;
+        height: 100%;
+    }
+
+    .site-header-background:not(.responsive-header-img) .site-nav-left:after,
+    .site-nav-main .site-nav-left:after {
+        right: 10px;
+        background: linear-gradient(to right, color(var(--darkgrey) l(-5%) a(0)) 0%,color(var(--darkgrey) l(-5%)) 100%);
+    }
+
+    .nav li:last-of-type {
+        padding-right: 20px;
+    }
 }
 
 /* Site Nav Hack Explanation (above):
@@ -464,103 +473,128 @@ The knock-on effect of this is ugly browser-scroll bars at the bottom, so 80px o
 }
 
 .site-nav-right {
-    flex: 0 1 auto;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 10px 0;
-    height: 64px;
-}
-
-.site-nav-right .nav {
-    position: relative;
-    margin: 0;
-}
-
-.site-nav-right .nav a {
-    white-space: nowrap;
-}
-
-.site-nav-right .nav a:before {
-    display: none;
-}
-
-.site-nav-right .nav li:last-of-type a {
-    margin-right: -12px;
-}
-
-.social-links {
     flex-shrink: 0;
     display: flex;
     align-items: center;
+    padding: 9px 0 10px;
+    height: 64px;
+    font-size: 1.4rem;
+    line-height: 1.0em;
 }
 
-.social-link {
-    display: inline-block;
-    margin: 0;
-    padding: 10px;
-    opacity: 0.8;
-}
-
-.social-link:hover {
-    opacity: 1.0;
-}
-
-.social-link svg {
-    height: 1.8rem;
-    fill: #fff;
-}
-
-.social-link-fb svg {
-    height: 1.6rem;
-}
-
-.social-link-wb svg {
-    height: 1.6rem;
-}
-
-.social-link-wb svg path {
-    stroke: #fff;
-}
-
-.social-link-rss svg {
-    height: 1.9rem;
-}
-
-.subscribe-button {
-    display: block;
-    margin: 0 0 0 10px;
-    padding: 4px 10px;
-    border: #fff 1px solid;
+.site-nav-right a {
     color: #fff;
-    line-height: 1em;
-    border-radius: 10px;
+}
+
+.button.small.signout-link {
+    color: #fff;
+    box-shadow: #fff 0 0 0 1px inset;
     opacity: 0.8;
 }
 
-.subscribe-button:hover {
+.button.small.signout-link:hover {
+    opacity: 1;
+}
+
+.account-menu {
+    position: relative;
+}
+
+.account-menu-avatar {
+    position: relative;
+    display: block;
+    margin: 0;
+    padding: 1px;
+    width: 32px;
+    height: 32px;
+    background: color(var(--lightgrey) l(+10%));
+    border-radius: 100%;
+    cursor: pointer;
+}
+
+.account-menu-avatar img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 100%;
+}
+
+.account-menu ul {
+    visibility: hidden;
+    position: absolute;
+    top: 43px;
+    right: -8px;
+    z-index: 9998;
+    padding: 8px 0;
+    min-width: 240px;
+    background: #fff;
+    border-radius: 3px;
+    box-shadow: rgba(39,44,49,0.08) 0 12px 26px, rgba(39, 44, 49, 0.06) 1px 3px 8px;
+    list-style: none;
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.4,0.01,0.165,0.99), opacity 0.2s cubic-bezier(0.4,0.01,0.165,0.99);
+    transform: translateY(-6px) scale(0.95);
+    transform-origin: top right;
+    pointer-events: none;
+}
+
+.account-menu-avatar.active + ul {
+    visibility: visible;
+    opacity: 1.0;
+    transform: translateY(0) scale(1);
+    pointer-events: all;
+}
+
+.account-menu ul:before {
+    content: "";
+    position: absolute;
+    top: -8px;
+    right: 14px;
+    z-index: 9998;
+    width: 0;
+    height: 0;
+    border-width: 0 10px 10px;
+    border-style: solid;
+    border-color: transparent transparent #fff;
+}
+
+.account-menu ul li {
+    margin: 0;
+    padding: 0;
+}
+
+.account-menu .account-info {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 6px;
+    padding: 4px 20px 12px;
+    border-bottom: 1px solid var(--whitegrey);
+    color: var(--midgrey);
+}
+
+.account-info .account-email {
+    display: inline-block;
+    overflow-x: hidden;
+    margin-top: -4px;
+    max-width: 200px;
+    color: color(var(--midgrey) l(-30%));
+    font-weight: 600;
+    text-overflow: ellipsis;
+}
+
+.account-menu ul a {
+    display: block;
+    padding: 6px 20px;
+    color: color(var(--midgrey) l(-30%));
+}
+
+.account-menu ul a:hover {
+    color: var(--blue);
     text-decoration: none;
-    opacity: 1;
 }
 
-.site-nav-right .nav + .subscribe-button {
-    margin-left: 24px;
-}
-
-.rss-button {
-    padding: 10px 8px;
-    opacity: 0.8;
-}
-
-.rss-button:hover {
-    opacity: 1;
-}
-
-.rss-button svg {
-    margin-bottom: 1px;
-    height: 2.1rem;
-    fill: #fff;
-}
 
 /* Special behaviors for home navigation */
 
@@ -593,8 +627,8 @@ The knock-on effect of this is ugly browser-scroll bars at the bottom, so 80px o
         padding-left: 5vw;
     }
 
-    .site-nav-right {
-        display: none;
+    .site-nav-main .site-nav-right {
+        padding: 9px 20px 10px 5px;
     }
 }
 
@@ -624,7 +658,7 @@ The knock-on effect of this is ugly browser-scroll bars at the bottom, so 80px o
     margin: 0 0 40px;
     padding: 0 20px 40px;
     min-height: 220px;
-    border-bottom: 1px solid color-mod(var(--lightgrey) l(+12%));
+    border-bottom: 1px solid color(var(--lightgrey) l(+12%));
     background-size: cover;
 }
 
@@ -666,7 +700,6 @@ The knock-on effect of this is ugly browser-scroll bars at the bottom, so 80px o
 }
 
 .post-card-primary-tag {
-    margin: 0 0 0.2em;
     color: var(--blue);
     font-size: 1.2rem;
     font-weight: 500;
@@ -711,7 +744,7 @@ The knock-on effect of this is ugly browser-scroll bars at the bottom, so 80px o
     display: block;
     width: 100%;
     height: 100%;
-    background: color-mod(var(--lightgrey) l(+10%));
+    background: color(var(--lightgrey) l(+10%));
     border-radius: 100%;
 
     object-fit: cover;
@@ -782,7 +815,7 @@ The knock-on effect of this is ugly browser-scroll bars at the bottom, so 80px o
     display: flex;
     flex-direction: column;
     margin: 2px 0 0 6px;
-    color: color-mod(var(--midgrey) l(+10%));
+    color: color(var(--midgrey) l(+10%));
     font-size: 1.2rem;
     line-height: 1.4em;
     font-weight: 400;
@@ -795,7 +828,7 @@ The knock-on effect of this is ugly browser-scroll bars at the bottom, so 80px o
 }
 
 .post-card-byline-content a {
-    color: color-mod(var(--darkgrey) l(+20%));
+    color: color(var(--darkgrey) l(+20%));
     font-weight: 600;
 }
 
@@ -813,7 +846,7 @@ The knock-on effect of this is ugly browser-scroll bars at the bottom, so 80px o
     display: flex;
     flex-direction: column;
     margin-left: 5px;
-    color: color-mod(var(--midgrey) l(-10%));
+    color: color(var(--midgrey) l(-10%));
     font-size: 1.3rem;
     line-height: 1.4em;
     font-weight: 500;
@@ -850,7 +883,7 @@ make sure this only happens on large viewports / desktop-ish devices.
     }
 
     .post-card-large:hover {
-        border-bottom-color: color-mod(var(--lightgrey) l(+10%));
+        border-bottom-color: color(var(--lightgrey) l(+10%));
     }
 
     .post-card-large:not(.no-image) .post-card-header {
@@ -929,7 +962,6 @@ make sure this only happens on large viewports / desktop-ish devices.
 
 .post-template .site-main,
 .page-template .site-main {
-    margin-top: 64px;
     padding-bottom: 4vw;
     background: #fff;
 }
@@ -980,7 +1012,7 @@ make sure this only happens on large viewports / desktop-ish devices.
 
 .post-full-title {
     margin: 0 0 0.2em;
-    color: color-mod(var(--darkgrey) l(-5%));
+    color: color(var(--darkgrey) l(-5%));
 }
 
 .post-full-custom-excerpt {
@@ -1004,7 +1036,7 @@ make sure this only happens on large viewports / desktop-ish devices.
     align-items: center;
     overflow: hidden;
     margin: 25px 0 50px;
-    background: color-mod(var(--lightgrey) l(+10%));
+    background: color(var(--lightgrey) l(+10%));
     border-radius: 3px;
 }
 
@@ -1017,7 +1049,7 @@ make sure this only happens on large viewports / desktop-ish devices.
 .post-full-content {
     position: relative;
     margin: 0 auto;
-    padding: 0 170px 6vw;
+    padding: 0 170px 5vw;
     min-height: 230px;
     font-family: Georgia, serif;
     font-size: 2.0rem;
@@ -1104,7 +1136,7 @@ make sure this only happens on large viewports / desktop-ish devices.
 
 .post-full-content strong,
 .post-full-content em {
-    color: color-mod(var(--darkgrey) l(-5%));
+    color: color(var(--darkgrey) l(-5%));
 }
 
 .post-full-content small {
@@ -1169,7 +1201,7 @@ Usage (In Ghost editor):
 .post-full-content blockquote {
     margin: 0 0 1.5em;
     padding: 0 1.5em;
-    border-left: color-mod(var(--blue)) 3px solid;
+    border-left: #3eb0ef 3px solid;
 }
 @media (max-width: 500px) {
     .post-full-content blockquote {
@@ -1207,16 +1239,16 @@ Usage (In Ghost editor):
     margin: 1.5em 0 3em;
     padding: 20px;
     max-width: 100%;
-    border: color-mod(var(--darkgrey) l(-10%)) 1px solid;
+    border: color(var(--darkgrey) l(-10%)) 1px solid;
     color: var(--whitegrey);
     font-size: 1.4rem;
     line-height: 1.5em;
-    background: color-mod(var(--darkgrey) l(-3%));
+    background: color(var(--darkgrey) l(-3%));
     border-radius: 5px;
 }
 
 .post-full-content pre ::selection {
-    color: color-mod(var(--midgrey) l(-25%));
+    color: color(var(--midgrey) l(-25%));
 }
 
 .post-full-content pre code {
@@ -1247,7 +1279,7 @@ Usage (In Ghost editor):
     margin-left: -10px;
     width: 1px;
     height: 30px;
-    background: color-mod(var(--lightgrey) l(+10%));
+    background: color(var(--lightgrey) l(+10%));
     box-shadow: #fff 0 0 0 5px;
     transform: rotate(45deg);
 }
@@ -1262,7 +1294,7 @@ Usage (In Ghost editor):
 .post-full-content h4,
 .post-full-content h5,
 .post-full-content h6 {
-    color: color-mod(var(--darkgrey) l(-5%));
+    color: color(var(--darkgrey) l(-5%));
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
@@ -1482,13 +1514,13 @@ Usage (In Ghost editor):
     letter-spacing: 0.2px;
     text-align: left;
     text-transform: uppercase;
-    background-color: color-mod(var(--whitegrey) l(+4%));
+    background-color: color(var(--whitegrey) l(+4%));
 }
 
 .post-full-content table th,
 .post-full-content table td {
     padding: 6px 12px;
-    border: color-mod(var(--whitegrey) l(-1%) s(-5%)) 1px solid;
+    border: color(var(--whitegrey) l(-1%) s(-5%)) 1px solid;
 }
 
 
@@ -1500,7 +1532,7 @@ Usage (In Ghost editor):
     justify-content: space-between;
     margin: 35px 0 0;
     padding-top: 15px;
-    border-top: 1px solid color-mod(var(--lightgrey) l(+10%));
+    border-top: 1px solid color(var(--lightgrey) l(+10%));
 }
 
 .post-full-byline-content {
@@ -1516,7 +1548,7 @@ Usage (In Ghost editor):
 
 .post-full-byline-meta {
     margin: 2px 0 0;
-    color: color-mod(var(--midgrey) l(+10%));
+    color: color(var(--midgrey) l(+10%));
     font-size: 1.2rem;
     line-height: 1.2em;
     letter-spacing: 0.2px;
@@ -1531,7 +1563,7 @@ Usage (In Ghost editor):
 }
 
 .post-full-byline-meta h4 a {
-    color: color-mod(var(--darkgrey) l(+10%));
+    color: color(var(--darkgrey) l(+10%));
 }
 
 .post-full-byline-meta h4 a:hover {
@@ -1611,7 +1643,7 @@ Usage (In Ghost editor):
 
 .author-card .author-info p {
     margin: 4px 0 0;
-    color: color-mod(var(--midgrey) l(-10%));
+    color: color(var(--midgrey) l(-10%));
 }
 
 .author-card .author-info .bio h2 {
@@ -1689,9 +1721,9 @@ Usage (In Ghost editor):
 .subscribe-form {
     margin: 1.5em 0;
     padding: 6.5vw 7vw 8vw;
-    border: color-mod(var(--lightgrey) l(+10%)) 1px solid;
+    border: color(var(--lightgrey) l(+10%)) 1px solid;
     text-align: center;
-    background: linear-gradient(color-mod(var(--whitegrey) l(+6%)), color-mod(var(--whitegrey) l(+4%)));
+    background: linear-gradient(color(var(--whitegrey) l(+6%)), color(var(--whitegrey) l(+4%)));
     border-radius: 3px;
 }
 
@@ -1729,7 +1761,7 @@ Usage (In Ghost editor):
     display: block;
     padding: 10px;
     width: 100%;
-    border: color-mod(var(--lightgrey) l(+7%)) 1px solid;
+    border: color(var(--lightgrey) l(+7%)) 1px solid;
     color: var(--midgrey);
     font-size: 1.8rem;
     line-height: 1em;
@@ -1743,7 +1775,7 @@ Usage (In Ghost editor):
 
 .subscribe-email:focus {
     outline: 0;
-    border-color: color-mod(var(--lightgrey) l(-2%));
+    border-color: color(var(--lightgrey) l(-2%));
 }
 
 .subscribe-form button {
@@ -1759,10 +1791,10 @@ Usage (In Ghost editor):
     font-weight: 400;
     text-align: center;
     background: linear-gradient(
-    color-mod(var(--blue) whiteness(+7%)),
-    color-mod(var(--blue) lightness(-7%) saturation(-10%)) 60%,
-    color-mod(var(--blue) lightness(-7%) saturation(-10%)) 90%,
-    color-mod(var(--blue) lightness(-4%) saturation(-10%))
+    color(var(--blue) whiteness(+7%)),
+    color(var(--blue) lightness(-7%) saturation(-10%)) 60%,
+    color(var(--blue) lightness(-7%) saturation(-10%)) 90%,
+    color(var(--blue) lightness(-4%) saturation(-10%))
     );
     border-radius: 5px;
 
@@ -1771,7 +1803,7 @@ Usage (In Ghost editor):
 
 .subscribe-form button:active,
 .subscribe-form button:focus {
-    background: color-mod(var(--blue) lightness(-9%) saturation(-10%));
+    background: color(var(--blue) lightness(-9%) saturation(-10%));
 }
 
 .subscribe-form .button-loader,
@@ -1811,7 +1843,7 @@ Usage (In Ghost editor):
 
 .subscribe-form .success .message-success {
     display: block;
-    color: color-mod(var(--green) l(-5%));
+    color: color(var(--green) l(-5%));
 }
 
 .subscribe-form .invalid .message-error,
@@ -1861,7 +1893,7 @@ Usage (In Ghost editor):
 
 .read-next {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    background: color-mod(var(--darkgrey) l(-5%));
+    background: color(var(--darkgrey) l(-5%));
 }
 
 .read-next-feed {
@@ -1919,7 +1951,7 @@ Usage (In Ghost editor):
     overflow: hidden;
     margin: 0 25px 50px;
     padding: 25px;
-    background: linear-gradient(color-mod(var(--darkgrey) l(+2%)), color-mod(var(--darkgrey) l(-5%)));
+    background: linear-gradient(color(var(--darkgrey) l(+2%)), color(var(--darkgrey) l(-5%)));
     border-radius: 3px;
 }
 
@@ -2108,7 +2140,7 @@ Usage (In Ghost editor):
 
 .post-full-content figcaption {
     margin: 1.0em auto 0;
-    color: color-mod(var(--midgrey) l(-10%));
+    color: color(var(--midgrey) l(-10%));
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
     font-size: 75%;
     line-height: 1.5em;
@@ -2184,6 +2216,7 @@ Usage (In Ghost editor):
 
 .kg-bookmark-card {
     width: 100%;
+    background: var(--white);
 }
 
 .kg-card + .kg-bookmark-card {
@@ -2216,7 +2249,7 @@ Usage (In Ghost editor):
 }
 
 .kg-bookmark-title {
-    color: color-mod(var(--midgrey) l(-30%));
+    color: color(var(--midgrey) l(-30%));
     font-size: 1.6rem;
     line-height: 1.5em;
     font-weight: 600;
@@ -2232,7 +2265,7 @@ Usage (In Ghost editor):
     overflow-y: hidden;
     margin-top: 12px;
     max-height: 48px;
-    color: color-mod(var(--midgrey) l(-10%));
+    color: color(var(--midgrey) l(-10%));
     font-size: 1.5rem;
     line-height: 1.5em;
     font-weight: 400;
@@ -2263,7 +2296,7 @@ Usage (In Ghost editor):
     flex-wrap: wrap;
     align-items: center;
     margin-top: 14px;
-    color: color-mod(var(--midgrey) l(-10%));
+    color: color(var(--midgrey) l(-10%));
     font-size: 1.5rem;
     font-weight: 400;
 }
@@ -2521,7 +2554,7 @@ Usage (In Ghost editor):
 
 .error-message {
     padding-bottom: 10vw;
-    border-bottom: 1px solid color-mod(var(--lightgrey) l(+10%));
+    border-bottom: 1px solid color(var(--lightgrey) l(+10%));
     text-align: center;
 }
 
@@ -2584,32 +2617,63 @@ Usage (In Ghost editor):
 /* 10. Subscribe Message and Overlay
 /* ---------------------------------------------------------- */
 
-.subscribe-success-message {
+.notification {
+    visibility: hidden;
     position: fixed;
     top: 0;
     right: 0;
     left: 0;
     z-index: 9000;
-    padding: 20px 0;
+    padding: 22px 60px;
     color: #fff;
+    font-size: 1.6rem;
+    line-height: 1.3em;
+    font-weight: 500;
     text-align: center;
-    background: var(--green);
+    background: color(var(--green) l(-5%));
     transition: all 0.35s cubic-bezier(0.19, 1, 0.22, 1) 0.5s;
     transform: translateY(-175%);
 }
 
-.subscribe-success .subscribe-success-message {
+.subscribe-success .notification-subscribe {
+    visibility: visible;
+    transform: translateY(0);
+}
+.signup-success .notification-signup {
+    visibility: visible;
+    transform: translateY(0);
+}
+.signin-success .notification-signin {
+    visibility: visible;
+    transform: translateY(0);
+}
+.signin-failure .notification-signin-failure {
+    visibility: visible;
+    background: color(var(--red) l(-5%));
+    transform: translateY(0);
+}
+.checkout-success .notification-checkout {
+    visibility: visible;
+    transform: translateY(0);
+}
+.billing-success .notification-billing-update {
     visibility: visible;
     transform: translateY(0);
 }
 
-.subscribe-success-message.close {
+.billing-cancel .notification-billing-update-cancel {
+    visibility: visible;
+    background: color(var(--red) l(-5%));
+    transform: translateY(0);
+}
+
+.notification.closed {
     visibility: hidden;
     transition: all 1.35s cubic-bezier(0.19, 1, 0.22, 1);
     transform: translateY(-175%);
 }
 
-.subscribe-close-overlay {
+.notification-close {
     position: absolute;
     top: 0;
     right: 0;
@@ -2618,46 +2682,32 @@ Usage (In Ghost editor):
     display: block;
 }
 
-.subscribe-close-button {
-    position: absolute;
-    top: 16px;
-    right: 20px;
-    z-index: 2000;
-    display: block;
-    width: 40px;
-    height: 40px;
-}
-
-.subscribe-close-button:before {
+.notification-close:before {
     content: "";
     position: absolute;
-    top: 20px;
-    right: 4px;
+    top: 29px;
+    right: 25px;
     display: block;
-    width: 32px;
-    height: 1px;
+    width: 18px;
+    height: 2px;
     background: #fff;
-    opacity: 0.8;
+    border-radius: 2px;
     transform: rotate(45deg);
 }
 
-.subscribe-close-button:after {
+.notification-close:after {
     content: "";
     position: absolute;
-    top: 20px;
-    right: 4px;
+    top: 29px;
+    right: 25px;
     display: block;
-    width: 32px;
-    height: 1px;
+    width: 18px;
+    height: 2px;
     background: #fff;
-    opacity: 0.8;
+    border-radius: 2px;
     transform: rotate(-45deg);
 }
 
-.subscribe-close-overlay:hover,
-.subscribe-close-button:hover {
-    cursor: default;
-}
 
 .subscribe-overlay {
     position: fixed;
@@ -2665,7 +2715,7 @@ Usage (In Ghost editor):
     right: 0;
     bottom: 0;
     left: 0;
-    z-index: 2000;
+    z-index: 9000;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -2673,16 +2723,24 @@ Usage (In Ghost editor):
     opacity: 0;
     transition: opacity 0.2s ease-in;
     pointer-events: none;
+
+    backdrop-filter: blur(3px);
+}
+
+.subscribe-overlay .subscribe-close:before,
+.subscribe-overlay .subscribe-close:after {
+    top: 36px;
+    width: 30px;
 }
 
 .subscribe-overlay:target {
-    z-index: 2001;
     opacity: 1;
     pointer-events: auto;
 }
 
 .subscribe-overlay-content {
     position: relative;
+    z-index: 9999;
     margin: 0 0 5vw 0;
     padding: 4vw;
     color: #fff;
@@ -2751,7 +2809,7 @@ Usage (In Ghost editor):
 
 .subscribe-email:focus {
     outline: 0;
-    border-color: color-mod(var(--lightgrey) l(-2%));
+    border-color: color(var(--lightgrey) l(-2%));
 }
 
 .subscribe-overlay button {
@@ -2766,10 +2824,10 @@ Usage (In Ghost editor):
     font-weight: 400;
     text-align: center;
     background: linear-gradient(
-    color-mod(var(--blue) whiteness(+7%)),
-    color-mod(var(--blue) lightness(-7%) saturation(-10%)) 60%,
-    color-mod(var(--blue) lightness(-7%) saturation(-10%)) 90%,
-    color-mod(var(--blue) lightness(-4%) saturation(-10%))
+    color(var(--blue) whiteness(+7%)),
+    color(var(--blue) lightness(-7%) saturation(-10%)) 60%,
+    color(var(--blue) lightness(-7%) saturation(-10%)) 90%,
+    color(var(--blue) lightness(-4%) saturation(-10%))
     );
     border-radius: 8px;
 
@@ -2778,17 +2836,11 @@ Usage (In Ghost editor):
 
 .subscribe-overlay button:active,
 .subscribe-overlay button:focus {
-    background: color-mod(var(--blue) lightness(-9%) saturation(-10%));
+    background: color(var(--blue) lightness(-9%) saturation(-10%));
 }
 
 .subscribe-overlay .loading .button-loader {
     top: 5px;
-}
-
-@media (max-width: 500px) {
-    .subscribe-overlay button {
-        margin: 12px 0 0;
-    }
 }
 
 
@@ -2800,7 +2852,7 @@ Usage (In Ghost editor):
     padding-top: 20px;
     padding-bottom: 60px;
     color: #fff;
-    background: color-mod(var(--darkgrey) l(-5%));
+    background: color(var(--darkgrey) l(-5%));
 }
 
 .site-footer-content {
@@ -2821,48 +2873,718 @@ Usage (In Ghost editor):
     text-decoration: none;
 }
 
-.site-footer-nav {
-    display: flex;
+.site-footer .copyright a {
+    padding: 0 0 0 15px;
 }
 
-.site-footer-nav a {
-    position: relative;
-    margin-left: 20px;
-}
-
-.site-footer-nav a:before {
-    content: "";
-    position: absolute;
-    top: 11px;
-    left: -11px;
-    display: block;
-    width: 2px;
-    height: 2px;
-    background: #fff;
-    border-radius: 100%;
-}
-
-.site-footer-nav a:first-of-type:before {
-    display: none;
+.site-footer .copyright a:first-child {
+    padding: 0;
 }
 
 @media (max-width: 650px) {
     .site-footer-content {
         flex-direction: column;
     }
-
-    .site-footer-nav a:first-child {
-        margin-left: 0;
+    .site-footer .copyright {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
     }
 }
 
 
-/* 12. Dark Mode
+/* 12. Members
+/* ---------------------------------------------------------- */
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="tel"],
+input[type="search"],
+input[type="url"],
+select {
+    display: block;
+    padding: 0 0.6em;
+    width: 100%;
+    height: 44px;
+    outline: 0;
+    border: none;
+    border: solid 1px var(--lightgrey);
+    color: inherit;
+    text-decoration: none;
+    background: #fff;
+    border-radius: 5px;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="search"]:focus,
+input[type="url"]:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--blue);
+}
+
+.button {
+    display: inline-block;
+    padding: 0 1.8rem;
+    height: 44px;
+    border: 0;
+    font-size: 1.5rem;
+    line-height: 42px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.4s ease;
+
+    appearance: none;
+}
+
+.button.fit {
+    width: 100%;
+}
+
+.button.small {
+    padding: 0 1.1rem;
+    height: 30px;
+    font-size: 1.4rem;
+    line-height: 30px;
+}
+
+.button.large {
+    padding: 0 3rem;
+    height: calc(44px * 1.14);
+    font-size: 1.6rem;
+    line-height: calc(44px * 1.14);
+}
+
+.button.disabled,
+.button:disabled {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.button {
+    color: var(--blue);
+    background-color: transparent;
+    box-shadow: inset 0 0 0 1px var(--blue);
+}
+
+.button:hover {
+    color: color(var(--blue) l(-15%));
+    text-decoration: none;
+    box-shadow: inset 0 0 0 1px color(var(--blue) l(-10%));
+    transition: 0.2s ease;
+}
+
+.button.primary {
+    color: #fff;
+    background-color: var(--blue);
+    box-shadow: none;
+}
+
+.button.primary:hover {
+    background-color: color(var(--blue) l(-10%));
+}
+
+.site-signup {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.signup-form {
+    margin: 0 auto 10vw;
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+}
+
+.signup-title {
+    margin: 0 0 0.1em;
+    font-size: 4.2rem;
+}
+
+.signup-form p {
+    color: var(--midgrey);
+    font-size: 1.3em;
+}
+
+.signup-form p small {
+    display: inline-block;
+    margin: 15px 0 0 0;
+    font-size: 1.4rem;
+}
+
+.signup-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.signup-box .button {
+    margin-left: 10px;
+}
+
+@media (max-width: 600px) {
+    .signup-box {
+        flex-direction: column;
+    }
+    .signup-box .button {
+        margin: 15px 0 0 0;
+        width: 100%;
+    }
+}
+
+.site-signin {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.signin-form {
+    margin: 0 auto 10vw;
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+}
+
+.signin-title {
+    margin: 0 0 0.1em;
+    font-size: 4.2rem;
+}
+
+.signin-form p {
+    color: var(--midgrey);
+    font-size: 1.3em;
+}
+
+.signin-form p small {
+    display: inline-block;
+    margin: 15px 0 0 0;
+    font-size: 1.4rem;
+}
+
+.signin-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.signin-box .button {
+    margin-left: 10px;
+}
+
+@media (max-width: 600px) {
+    .signin-box {
+        flex-direction: column;
+    }
+    .signin-box .button {
+        margin: 15px 0 0 0;
+        width: 100%;
+    }
+}
+
+.checkout-form {
+    margin: 0 auto 10vw;
+    max-width: 700px;
+    width: 100%;
+    text-align: center;
+}
+
+.checkout-title {
+    margin: 0 auto 10px;
+    padding: 5vw 0 0;
+    font-size: 4rem;
+    font-weight: 600;
+    letter-spacing: -0.6px;
+}
+
+.checkout-form p {
+    margin: 0 auto 60px;
+    max-width: 500px;
+    color: var(--midgrey);
+    font-size: 1.3em;
+}
+
+.checkout-box {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.checkout-plan {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    border-top: var(--blue) 6px solid;
+    color: color(var(--midgrey) l(-30%));
+    text-align: left;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 0 1px rgba(39,44,49,0.03), 0 0 3px rgba(39,44,49,0.05), 0 5px 22px -10px rgba(39,44,49,0.12), 0 25px 30px -25px rgba(39,44,49,0.05);
+}
+
+.checkout-plan + .checkout-plan {
+    margin-left: 30px;
+}
+
+.checkout-plan-header {
+    position: relative;
+    padding: 0 0 50px;
+    color: var(--midgrey);
+    text-align: center;
+}
+
+.checkout-plan-header:after {
+    content: "";
+    position: absolute;
+    right: 30%;
+    bottom: 25px;
+    left: 30%;
+    display: block;
+    height: 2px;
+    background: rgba(39,44,49,0.08);
+    border-radius: 2px;
+}
+
+.checkout-plan-header h3 {
+    margin: 0 0 25px 0;
+    color: var(--darkgrey);
+    font-size: 1.8rem;
+    line-height: 1.15em;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.checkout-plan-header span {
+    font-size: 2.6rem;
+    font-weight: 300;
+}
+
+.checkout-plan-header strong {
+    color: var(--darkgrey);
+    font-size: 4.5rem;
+    font-weight: 500;
+}
+
+.checkout-plan-content {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.checkout-plan-content ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.checkout-plan-content li {
+    position: relative;
+    margin: 0;
+    padding: 0 0 15px 20px;
+    line-height: 1.4em;
+}
+
+.checkout-plan-content li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    display: block;
+    color: color(var(--green) l(-5%));
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.checkout-plan-content .button {
+    margin: 20px 0 0 0;
+}
+
+@media (max-width: 740px) {
+    .checkout-title {
+        margin-top: 50px;
+    }
+    .checkout-box {
+        flex-direction: column;
+    }
+    .checkout-plan + .checkout-plan {
+        margin: 5vw 0 0 0;
+    }
+}
+
+form[data-members-form] .button-loader,
+form[data-members-form] .message-success,
+form[data-members-form] .message-error {
+    display: none;
+}
+
+.message-success svg,
+.message-error svg {
+    position: relative;
+    top: -1px;
+    margin-right: 5px;
+    width: 15px;
+    height: 15px;
+}
+.message-success svg {
+    fill: #fff;
+}
+.message-error svg {
+    fill: var(--red);
+}
+
+form[data-members-form].success .message-success,
+form[data-members-form].error .message-error {
+    position: fixed;
+    top: 84px;
+    right: 20px;
+    left: 20px;
+    z-index: 9999;
+    margin: 0 auto;
+    padding: 10px 0;
+    color: #fff;
+    font-size: 1.4rem;
+    line-height: 1.5em;
+    font-weight: 500;
+    text-align: center;
+    background: color(var(--green) l(-5%));
+    border-radius: 5px;
+}
+form[data-members-form].success .message-success {
+    background: color(var(--green) l(-5%));
+}
+form[data-members-form].error .message-error {
+    color: var(--red);
+    background: #fff;
+    box-shadow: var(--red) 0 0 0 1px;
+}
+
+form[data-members-form] .button {
+    position: relative;
+}
+
+/*-- Loading --*/
+
+/* Hide button text */
+form[data-members-form].loading .button-content {
+    visibility: hidden;
+}
+
+/* Show loading spinner */
+form[data-members-form].loading .button-loader {
+    position: absolute;
+    left: 50%;
+    display: inline-block;
+    margin-left: -19px;
+    height: 31px;
+    transform: scale(0.7);
+}
+
+.button-loader svg path,
+.button-loader svg rect {
+    fill: #fff;
+}
+
+/*-- Show success message on success --*/
+form[data-members-form].success .message-success {
+    display: block;
+}
+
+/*-- Show error message on error --*/
+form[data-members-form].error .message-error {
+    display: block;
+}
+
+.site-account {
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5vw;
+}
+
+.subscriber-box {
+    margin: 0 auto;
+    max-width: 560px;
+    width: 100%;
+}
+
+.subscriber-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.subscription-title h1 {
+    margin-bottom: 12px;
+    font-size: 3.4rem;
+}
+
+.subscriber-avatar {
+    position: relative;
+    flex: 1 0 120px;
+    width: 120px;
+    height: 120px;
+    border: 1px solid color(var(--lightgrey) l(+10%));
+    background: color(var(--lightgrey) l(+10%));
+    border-radius: 100%;
+
+    object-fit: cover;
+}
+
+.subscription .subscriber-avatar {
+    margin: 4px 0 0 20px;
+}
+
+.subscriber-avatar img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 100%;
+}
+
+.subscriber-box p {
+    line-height: 1.5em;
+}
+
+.subscription {
+    padding: 20px 0 40px;
+}
+
+.subscription-expiration-warning {
+    color: var(--red);
+}
+
+.subscriber-details {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    margin-bottom: 30px;
+    padding: 20px 0 0;
+    border-top: 1px solid color(var(--lightgrey) l(+10%));
+    border-bottom: 1px solid color(var(--lightgrey) l(+10%));
+}
+
+.subscriber-detail {
+    flex: 1 0 50%;
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 20px;
+    padding: 0 20px 0 0;
+}
+
+.subscriber-detail-label {
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.subscription-actions {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.subscription-actions li {
+    margin: 0 0.8rem 0 0;
+    padding: 0;
+}
+
+.subscription-actions li:last-of-type {
+    margin-right: 0;
+}
+
+.subscription-actions li a {
+    display: inline-block;
+    padding: 0 1.8rem;
+    height: 44px;
+    border: 0;
+    color: var(--blue);
+    font-size: 1.5rem;
+    line-height: 42px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+    background-color: transparent;
+    border-radius: 5px;
+    box-shadow: inset 0 0 0 1px var(--blue);
+    cursor: pointer;
+    transition: 0.4s ease;
+
+    appearance: none;
+}
+
+.subscription-actions li a:hover {
+    color: color(var(--blue) l(-15%));
+    text-decoration: none;
+    text-decoration: none;
+    box-shadow: inset 0 0 0 1px color(var(--blue) l(-10%));
+    transition: 0.2s ease;
+}
+
+.subscription-actions .gh-subscription-cancel {
+    color: color(var(--midgrey) l(+10%));
+    box-shadow: inset 0 0 0 1px color(var(--midgrey) l(+10%));
+}
+
+.subscription-actions .gh-subscription-cancel:hover {
+    color: var(--midgrey);
+    box-shadow: inset 0 0 0 1px var(--midgrey);
+}
+
+.gh-subscription-cancel[data-members-continue-subscription] {
+    color: #fff;
+    background-color: var(--blue);
+    box-shadow: none;
+}
+
+.gh-subscription-cancel[data-members-continue-subscription]:hover {
+    color: #fff;
+    background-color: color(var(--blue) l(-10%));
+    box-shadow: none;
+}
+
+.gh-error-subscription-cancel {
+    display: block;
+    margin-top: 10px;
+    color: var(--red);
+    font-size: 1.5rem;
+}
+
+.account-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 560px;
+    width: 100%;
+}
+
+.account-box-title {
+    margin-top: 20px;
+    font-size: 3.4rem;
+    text-align: center;
+}
+
+.account-box p {
+    text-align: center;
+}
+
+.header-cta {
+    margin-left: 20px;
+}
+
+.post-card-header-tags {
+    display: flex;
+    align-items: center;
+    margin: 0 0 0.2em;
+}
+
+.post-visibility {
+    display: inline-block;
+    margin: 0 8px 1px 0;
+    padding: 1px 5px;
+    border: var(--lightgrey) 1px solid;
+    color: var(--midgrey);
+    font-size: 1.2rem;
+    line-height: 1.4em;
+    border-radius: 4px;
+}
+
+.post-visibility-members,
+.post-visibility-paid {
+    display: none;
+}
+
+.post-upgrade-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.post-upgrade-cta-content {
+    margin: 0 5vw;
+    padding: 40px 30px;
+    max-width: 840px;
+    width: 90vw;
+    color: #fff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    text-align: center;
+    background: color(var(--blue) l(-5%));
+    border-radius: 5px;
+}
+
+.post-upgrade-cta-content h2 {
+    margin: 0;
+    color: #fff;
+    font-size: 2.6rem;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+}
+
+.post-upgrade-cta .button,
+.post-upgrade-cta .button:hover {
+    margin: 30px 0;
+    color: var(--blue);
+    text-decoration: none;
+    background: #fff;
+    box-shadow: none;
+}
+
+.post-upgrade-cta p {
+    margin: 0;
+}
+
+.post-upgrade-cta a,
+.post-upgrade-cta a:hover {
+    color: #fff;
+    text-decoration: underline;
+    box-shadow: none !important;
+}
+
+@media (max-width: 600px) {
+    .subscriber-details {
+        flex-direction: column;
+    }
+
+    .subscriber-avatar {
+        display: none;
+    }
+}
+
+
+/* 13. Dark Mode
 /* ---------------------------------------------------------- */
 @media (prefers-color-scheme: dark) {
     body {
-        color: rgba(255, 255, 255, 0.75);
+        color: rgba(255, 255, 255, 0.80);
         background: var(--darkmode);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        color: #fff;
     }
 
     img {
@@ -2879,11 +3601,15 @@ Usage (In Ghost editor):
 
     .post-card,
     .post-card:hover {
-        border-bottom-color: color-mod(var(--darkmode) l(+8%));
+        border-bottom-color: color(var(--darkmode) l(+8%));
+    }
+
+    .post-visibility {
+        color: var(--lightgrey);
     }
 
     .author-profile-image {
-        background: var(--darkmode);
+        background: color(var(--darkmode) l(+5%));
     }
 
     .post-card-byline-content a {
@@ -2903,12 +3629,12 @@ Usage (In Ghost editor):
     }
 
     .post-card-excerpt {
-        color: color-mod(var(--midgrey) l(+10%));
+        color: color(var(--midgrey) l(+10%));
     }
 
     .author-avatar,
     .static-avatar {
-        border-color: color-mod(var(--darkgrey) l(+2%));
+        border-color: color(var(--darkgrey) l(+2%));
     }
 
     .site-main,
@@ -2926,15 +3652,15 @@ Usage (In Ghost editor):
     }
 
     .post-full-custom-excerpt {
-        color: color-mod(var(--midgrey) l(+10%));
+        color: color(var(--midgrey) l(+10%));
     }
 
     .post-full-image {
-        background-color: color-mod(var(--darkmode) l(+8%));
+        background-color: color(var(--darkmode) l(+8%));
     }
 
     .post-full-byline {
-        border-top-color: color-mod(var(--darkmode) l(+15%));
+        border-top-color: color(var(--darkmode) l(+15%));
     }
 
     .post-full-byline-meta h4 a {
@@ -2946,12 +3672,12 @@ Usage (In Ghost editor):
     }
 
     .author-list-item .author-card {
-        background: color-mod(var(--darkmode) l(+4%));
+        background: color(var(--darkmode) l(+4%));
         box-shadow: 0 12px 26px rgba(0,0,0,0.4);
     }
 
     .author-list-item .author-card:before {
-        border-top-color: color-mod(var(--darkmode) l(+4%));
+        border-top-color: color(var(--darkmode) l(+4%));
     }
 
     .no-image .author-social-link a {
@@ -2985,7 +3711,12 @@ Usage (In Ghost editor):
     }
 
     hr {
-        border-top-color: color-mod(var(--darkmode) l(+8%));
+        border-top-color: color(var(--darkmode) l(+8%));
+    }
+
+    .post-full-content hr:after {
+        background: color(var(--darkmode) l(+8%));
+        box-shadow: var(--darkmode) 0 0 0 5px;
     }
 
     .post-full-content figcaption {
@@ -2993,25 +3724,24 @@ Usage (In Ghost editor):
     }
 
     .post-full-content table td:first-child {
-        background-image: linear-gradient(to right, var(--darkmode) 50%, color-mod(var(--darkmode) a(0%)) 100%);
+        background-image: linear-gradient(to right, var(--darkmode) 50%, color(var(--darkmode) a(0%)) 100%);
     }
 
     .post-full-content table td:last-child {
-        background-image: linear-gradient(to left, var(--darkmode) 50%, color-mod(var(--darkmode) a(0%)) 100%);
+        background-image: linear-gradient(to left, var(--darkmode) 50%, color(var(--darkmode) a(0%)) 100%);
     }
 
     .post-full-content table th {
         color: rgba(255, 255, 255, 0.85);
-        background-color: color-mod(var(--darkmode) l(+8%));
+        background-color: color(var(--darkmode) l(+8%));
     }
 
     .post-full-content table th,
     .post-full-content table td {
-        border: color-mod(var(--darkmode) l(+8%)) 1px solid;
+        border: color(var(--darkmode) l(+8%)) 1px solid;
     }
 
-    .post-full-content .kg-bookmark-container,
-    .post-full-content .kg-bookmark-container:hover {
+    .post-full-content .kg-bookmark-container {
         color: rgba(255, 255, 255, 0.75);
         box-shadow: 0 0 1px rgba(255,255,255,0.9);
     }
@@ -3034,7 +3764,7 @@ Usage (In Ghost editor):
     }
 
     .site-archive-header .no-image .site-header-content {
-        border-bottom-color: color-mod(var(--darkmode) l(+15%));
+        border-bottom-color: color(var(--darkmode) l(+15%));
     }
 
     .site-header-content .author-profile-image {
@@ -3043,7 +3773,7 @@ Usage (In Ghost editor):
 
     .subscribe-form {
         border: none;
-        background: linear-gradient(color-mod(var(--darkmode) l(-6%)), color-mod(var(--darkmode) l(-3%)));
+        background: linear-gradient(color(var(--darkmode) l(-6%)), color(var(--darkmode) l(-3%)));
     }
 
     .subscribe-form-title {
@@ -3055,13 +3785,13 @@ Usage (In Ghost editor):
     }
 
     .subscribe-email {
-        border-color: color-mod(var(--darkmode) l(+6%));
+        border-color: color(var(--darkmode) l(+6%));
         color: rgba(255, 255, 255, 0.9);
-        background: color-mod(var(--darkmode) l(+3%));
+        background: color(var(--darkmode) l(+3%));
     }
 
     .subscribe-email:focus {
-        border-color: color-mod(var(--darkmode) l(+25%));
+        border-color: color(var(--darkmode) l(+25%));
     }
 
     .subscribe-form button {
@@ -3070,10 +3800,59 @@ Usage (In Ghost editor):
 
     .subscribe-form .invalid .message-error,
     .subscribe-form .error .message-error {
-        color: color-mod(var(--red) l(+5%) s(-5%));
+        color: color(var(--red) l(+5%) s(-5%));
     }
 
     .subscribe-form .success .message-success {
-        color: color-mod(var(--green) l(+5%) s(-5%));
+        color: color(var(--green) l(+5%) s(-5%));
+    }
+
+    .account-menu-avatar {
+        background: color(var(--darkmode) l(+5%));
+    }
+
+    .account-menu-avatar img {
+        opacity: 1.0;
+    }
+
+    .account-menu ul {
+        background: color(var(--darkmode) l(+4%));
+        box-shadow: 0 12px 26px rgba(0,0,0,0.4);
+    }
+
+    .account-menu ul::before {
+        border-color: transparent transparent color(var(--darkmode) l(+4%));
+    }
+
+    .account-menu .account-info {
+        border-color: color(var(--darkmode) l(+10%));
+    }
+
+    .account-menu .account-email,
+    .account-menu ul a {
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+    .subscriber-avatar {
+        border-color: color(var(--darkmode) l(+5%));
+        background: color(var(--darkmode) l(+5%));
+    }
+
+    .subscriber-avatar img {
+        opacity: 1.0;
+    }
+
+    .subscriber-details {
+        border-color: color(var(--darkmode) l(+5%));
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="search"],
+    input[type="url"],
+    select {
+        color: var(--darkgrey);
     }
 }
