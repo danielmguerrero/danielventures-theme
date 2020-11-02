@@ -3095,7 +3095,7 @@ textarea:focus {
 
 .checkout-form {
     margin: 0 auto 10vw;
-    max-width: 700px;
+    max-width: 1024px;
     width: 100%;
     text-align: center;
 }
