@@ -418,7 +418,7 @@ blockquote cite a {
 a {
     color: color(var(--blue) l(-5%));
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 600;
 }
 
 a:hover {
