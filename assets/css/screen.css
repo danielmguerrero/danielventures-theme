@@ -168,6 +168,14 @@ body {
     display: flex;
 }
 
+.header-name{
+    width: 30%
+}
+
+.header-subscription{
+    width: 70%
+}
+
 .site-title {
     z-index: 10;
     margin: 0 0 0 -2px;
@@ -255,6 +263,15 @@ body {
     .site-header-content {
         padding-bottom: 9vw;
     }
+
+    .header-name{
+        width: 100%
+    }
+
+    .header-subscription{
+        width: 100%;
+    }
+
 }
 
 @media (max-width: 500px) {
