@@ -272,6 +272,10 @@ body {
         width: 100%;
     }
 
+    .site-header-wrapper{
+    flex-direction: column;
+    }
+
 }
 
 @media (max-width: 500px) {
