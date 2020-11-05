@@ -6,7 +6,17 @@ into the {body} of the default.hbs template --}}
     {{> header-background background=@site.cover_image}} {{!--Special header-image.hbs partial to generate the background image--}}
         <div class="inner">
             {{> "site-nav"}}
-            <div class="site-header-content">
+            <div class="site-header-content header-name">
+                <h1 class="site-title">
+                    {{#if @site.logo}}
+                        <img class="site-logo" src="{{img_url @site.logo size="l"}}" alt="{{@site.title}}" />
+                    {{else}}
+                        {{@site.title}}
+                    {{/if}}
+                </h1>
+                <h2 class="site-description">{{@site.description}} <a href="https://daniel.ventures/test/"><span style="text-decoration: underline; color: white; font-weight:600; display:block;">¿Eres parte del cambio?</span></a></h2>
+            </div>
+            <div class="site-header-content header-subscription">
                 <h1 class="site-title">
                     {{#if @site.logo}}
                         <img class="site-logo" src="{{img_url @site.logo size="l"}}" alt="{{@site.title}}" />

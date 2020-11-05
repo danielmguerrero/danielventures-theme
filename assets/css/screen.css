@@ -164,6 +164,14 @@ body {
     max-height: 340px;
 }
 
+.header-name {
+    width: 40%;
+}
+
+.header-subscription {
+    width: 60%
+}
+
 .site-title {
     z-index: 10;
     margin: 0 0 0 -2px;
