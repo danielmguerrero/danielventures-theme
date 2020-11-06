@@ -15,18 +15,18 @@
 
         {{!-- Not logged in: Signin form --}}
         <form class="signin-form" data-members-form="signin">
-            <h1 class="signin-title">Welcome back!</h1>
-            <p>Sign into your account again for full access</p>
+            <h1 class="signin-title">A un paso de formar parte del cambio.</h1>
+            <p>Con el registro gratuito recibirás la newsletter 'Cambio' y accederás a contenido exlusivo</p>
             <div class="signin-box">
                 <input data-members-email type="email" placeholder="Your email address" required="true" autocomplete="false" />
                 <button class="button primary" type="submit">
-                    <span class="button-content">Send login link</span>
+                    <span class="button-content">Registro / login</span>
                     <span class="button-loader">{{> "icons/loader"}}</span>
                 </button>
             </div>
-            <p><small>Don't have an account yet? <a href="{{@site.url}}/signup/">Sign up</a></small></p>
-            <div class="message-success"><strong>Great!</strong> Check your inbox and click the link to complete signin</div>
-            <div class="message-error">Please enter a valid email address!</div>
+            <p><small>¿Quieres más? Descrubre los<a href="{{@site.url}}/signup/">planes avanzados</a></small></p>
+            <div class="message-success"><strong>Hecho.</strong> Puedes confirmar tu suscripción accediendo al enlace que te hemos enviado por correo.</div>
+            <div class="message-error">Parece que esta dirección no es correcta 😔</div>
         </form>
 
     {{/if}}
