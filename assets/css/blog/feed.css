@@ -29,11 +29,10 @@
 }
 
 .feed-calendar {
-    display: flex;
     margin-right: 1.5rem;
     min-width: 45px;
     color: var(--brand-color);
-    font-size: 1.1rem;
+    font-size: 3rem;
     font-weight: 800;
     white-space: nowrap;
 }
