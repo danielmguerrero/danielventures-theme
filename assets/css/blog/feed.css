@@ -29,7 +29,7 @@
 }
 
 .feed-calendar {
-    margin-right: 1.5rem;
+    margin-right: 6.5rem;
     min-width: 45px;
     color: var(--brand-color);
     font-size: 3rem;
@@ -82,4 +82,10 @@
     color: var(--secondary-text-color);
     transition: transform 0.2s var(--animation-base);
     transform: translateX(2rem);
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 768px) {
+    .feed {
+        display: block;
+    }
 }
