@@ -52,6 +52,7 @@
 }
 
 .menu-item {
+    letter-spacing: 1px;
     margin: 0 1.5rem;
     font-weight: 700;
     border-bottom: 2px solid var(--brand-color);
