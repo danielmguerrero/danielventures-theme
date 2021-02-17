@@ -36,10 +36,11 @@
         {{> header}}
         {{#is "home"}}
             {{> cover}}
-            {{> featured}}
+            
         {{/is}}
         <div class="site-content">
             {{{body}}}
+            {{> featured}}
         </div>
         {{> footer}}
         {{> modal}}
