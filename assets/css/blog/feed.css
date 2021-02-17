@@ -88,4 +88,10 @@
     .feed {
         display: block;
     }
+
+    .feed-calendar {
+        font-size: 1.8rem;
+        margin: 20px 0 11px;
+        display: flex;
+    }
 }
