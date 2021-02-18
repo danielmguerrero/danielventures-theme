@@ -21,7 +21,6 @@
 
 .header-right .menu-item + .menu-item {
     margin-left: 2rem;
-    border-bottom: none;
 }
 
 .logo {
@@ -56,7 +55,6 @@
     letter-spacing: 1px;
     margin: 0 1.5rem;
     font-weight: 700;
-    border-bottom: 2px solid var(--brand-color);
 }
 
 .menu-item[href*="..."],
