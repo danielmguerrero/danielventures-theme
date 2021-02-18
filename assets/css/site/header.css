@@ -21,6 +21,7 @@
 
 .header-right .menu-item + .menu-item {
     margin-left: 2rem;
+    border-bottom: none;
 }
 
 .logo {
