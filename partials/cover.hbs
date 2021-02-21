@@ -6,12 +6,13 @@
             </div>
         {{/if}}
 
-        {{#if @site.description}}
-            <div class="cover-description">{{@site.description}}</div>
-        {{/if}}
+        
 
         {{#if @labs.members}}
             {{#unless @member}}
+                {{#if @site.description}}
+                    <div class="cover-description">{{@site.description}}</div>
+                {{/if}}
                 <div class="cover-cta">
                     <button class="button members-subscribe" data-portal="signup">Susbscribe for free</button>
                     <button class="button button-secondary members-login" data-portal="signin">Login</button>
