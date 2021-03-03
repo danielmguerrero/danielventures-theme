@@ -7,9 +7,8 @@
     margin-bottom: 1rem;
     color: var(--secondary-text-color);
     font-size: 1.4rem;
-    font-weight: 800;
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 1px;
 }
 
 .single-meta-item + .single-meta-item::before {
