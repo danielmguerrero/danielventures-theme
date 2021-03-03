@@ -1,6 +1,7 @@
 .u-text-format {
-    font-size: 2rem;
+    font-size: 1.9rem;
     line-height: 1.5;
+    letter-spacing: -0.27px;
 }
 
 .u-text-format > * {
