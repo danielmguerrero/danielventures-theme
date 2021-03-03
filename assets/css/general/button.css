@@ -7,8 +7,8 @@
     outline: none;
     border: 0px solid var(--light-gray-color);
     color: var(--light-gray-color);
-    font-size: 14px;
-    font-weight: 800;
+    font-size: 13px;
+    font-weight: 600;
     letter-spacing: .5px;
     text-transform: uppercase;
     background-color: var(--darker-gray-color);
