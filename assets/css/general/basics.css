@@ -66,7 +66,7 @@ h1{
     color: var(--darker-gray-color);
     font-family: var(--font-base);
     line-height: 1.2;
-    letter-spacing: -0.5px;
+    letter-spacing: -0.8px;
     font-weight: 800;
     font-family: var(--font-headlines);
 }
