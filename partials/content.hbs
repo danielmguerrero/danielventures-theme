@@ -55,17 +55,19 @@
             {{else}}
                 
                 <section class="single-cta">
-                    {{#has visibility="paid"}}
-                        <h2 class="single-cta-title">This post is for paying subscribers only</h2>
-                    {{else}}
-                        <h2 class="single-cta-title">Lee el artículo completo</h2>
-                        <p class="single-cta-subtitle">
-                        Este artículo es exclusivo para suscriptores. Puedes desbloquearlo creando una cuenta gratuita. Además, accederás a todo el archivo y recibirás una newsletter exclusiva.
-                        </p>
-                    {{/has}}
-                    <button class="button single-cta-button" data-portal="signup">Suscríbete gratis</button>
-                    <br>
-                    <button class="button-text single-cta-footer" data-portal="signin">¿Ya tienes una cuenta? Inicia sesión.</button>
+                        <div class="post-access-cta">
+                        {{#has visibility="paid"}}
+                            <h2 class="single-cta-title">This post is for paying subscribers only</h2>
+                        {{else}}
+                            <h2 class="single-cta-title">Lee el artículo completo</h2>
+                            <p class="single-cta-subtitle">
+                            Este artículo es exclusivo para suscriptores. Puedes desbloquearlo creando una cuenta gratuita. Además, accederás a todo el archivo y recibirás una newsletter exclusiva.
+                            </p>
+                        {{/has}}
+                        <button class="button single-cta-button" data-portal="signup">Suscríbete gratis</button>
+                        <br>
+                        <button class="button-text single-cta-footer" data-portal="signin">¿Ya tienes una cuenta? Inicia sesión.</button>
+                    </div>
                 </section>
             {{/if}}
         {{else}}
