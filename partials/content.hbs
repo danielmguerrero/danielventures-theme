@@ -53,9 +53,7 @@
                     {{/if}}
                 {{/is}}
             {{else}}
-                <p>
-                    Este artículo es exclusivo para suscriptores. Puedes desbloquearlo creando una cuenta gratuita. Además, accederás a todo el archivo y recibirás una newsletter exclusiva.
-                </p>
+                
                 <section class="single-cta">
                     {{#has visibility="paid"}}
                         <h2 class="single-cta-title">This post is for paying subscribers only</h2>
@@ -63,13 +61,9 @@
                         <h2 class="single-cta-title">Lee el artículo completo</h2>
                     {{/has}}
                     <button class="button single-cta-button" data-portal="signup">Suscríbete gratis</button>
-                    <br>
-                    <div class="cover-description">
-                        <strong><span style="color: var(--brand-color);">✓ </span>Acceso artículos exclusivos</strong>
-                    </div>
-                    <div class="cover-description">
-                        <strong><span style="color: var(--brand-color);">✓ </span>Newsletter periódica</strong>
-                    </div>
+                    <p>
+                    Este artículo es exclusivo para suscriptores. Puedes desbloquearlo creando una cuenta gratuita. Además, accederás a todo el archivo y recibirás una newsletter exclusiva.
+                    </p>
                     <br>
                     <button class="button-text single-cta-footer" data-portal="signin">¿Ya tienes una cuenta? Inicia sesión.</button>
                 </section>
