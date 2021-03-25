@@ -4,7 +4,12 @@
     <main class="site-main">
         <div class="post-feed container medium">
             {{#foreach posts visibility="all"}}
+            	{{!-- exclude #noindex --}}
+            	{{#has tag="newsletter"}}
+                	{{!-- nothing --}}
+            	{{else}}
                 {{> "loop"}}
+                {{/has}}
             {{/foreach}}
         </div>
         {{pagination}}
